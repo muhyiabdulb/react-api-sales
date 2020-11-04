@@ -1,4 +1,5 @@
 import React from 'react'
+import currencyFormatter from 'currency-formatter'
 
 const Items = ({ items }) => {
   let no = 1;
@@ -33,7 +34,7 @@ const Items = ({ items }) => {
                           <td>{city}</td>
                           <th scope="row">{province_id}</th>
                           <td>{province}</td>
-                          <th>{total}</th>
+                          <th>{currencyFormatter.format(total, {code: 'IDR'})}</th>
                         </tr>
                       </tbody>
                     );
