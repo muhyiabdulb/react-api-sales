@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import HighMaps from 'highcharts/highmaps'
 import idAll from './Components/idAll'
 import currencyFormatter from 'currency-formatter'
+import Data from './Components/Data'
 
 
 const kindaMap = [
@@ -97,7 +98,12 @@ export default function App() {
     // console.log(json)
     setData(json.data)
   }
-  return <div className='in' />
+  return(
+    <div>
+      <div className='in' />
+      <Data />
+    </div>
+  )
 }
 
 function optionFactory(seriesData = [], formatter) {
