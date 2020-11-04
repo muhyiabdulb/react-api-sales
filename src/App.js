@@ -90,7 +90,7 @@ export default function App() {
   }, [])
   async function getListData() {
     const response = await fetch(
-      'http://103.123.229.45:4000/dashboard/sales-by-region'
+      'https://api.blst.co.id/dashboard/sales-by-region'
     )
     // console.log('haaaaaaa')
     const json = await response.json()
