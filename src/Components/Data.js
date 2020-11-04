@@ -10,7 +10,7 @@ class Data extends Component {
       }
     
       componentDidMount() {
-          fetch("http://103.123.229.45:4000/dashboard/sales-by-region")
+          fetch("https://api.blst.co.id/dashboard/sales-by-region")
             .then(res => res.json())
             .then(parsedJSON => parsedJSON.data.map(data => (
               {
