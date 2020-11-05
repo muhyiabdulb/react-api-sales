@@ -9,7 +9,7 @@ const Items = ({ items }) => {
         <h2 className="text-center">Data dalam Table</h2>
         <div className="row justify-content-center">
           <div className="col-md-6"> 
-            <div className="table">
+            <table className="table">
               <thead className="thead table-dark">
                 <tr>
                   <th scope="col">No.</th>
@@ -20,6 +20,7 @@ const Items = ({ items }) => {
                   <th scope="col">Total</th>
                 </tr>
               </thead>
+              <tbody>
                 {
                
 
@@ -27,8 +28,8 @@ const Items = ({ items }) => {
                   const {province, province_id, city, city_id, total} = item;
                   
                     return (
-                      <tbody>
-                        <tr>
+                      
+                        <tr key={city_id}>
                           <th>{no++}</th>
                           <th scope="row">{city_id}</th>
                           <td>{city}</td>
@@ -36,13 +37,14 @@ const Items = ({ items }) => {
                           <td>{province}</td>
                           <th>{currencyFormatter.format(total, {code: 'IDR'})}</th>
                         </tr>
-                      </tbody>
+  
                     );
                   }) : <div className="alert alert-primary alert-md" role="alert">
                         Loading ...
                       </div>
                 }
-            </div>
+                </tbody>
+            </table>
           </div>
         </div>
 

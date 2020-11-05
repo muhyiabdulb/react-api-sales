@@ -45,6 +45,8 @@ const kindaMap = [
 export default function App() {
   // console.log('asd')
   const [data, setData] = useState([])
+  const [muncul, setMuncul] = useState(true)
+
   useEffect(() => {
     new HighMaps['Map'](
       document.querySelector('.in'),
@@ -56,35 +58,33 @@ export default function App() {
         const provinceData = data.filter(
           value => value.province_id === provinceId
         )
-        
+
         return `
-        <span><center><strong>${
-          provinceData[0]?.province || 'Data Kosong'
-        }</strong></center</span><br />
+        <span><center><strong>${provinceData[0]?.province || 'Data Kosong'
+          }</strong></center</span><br />
         
-        ${
-          provinceData.reduce(
+        ${provinceData.reduce(
             (acc, value) =>
-              acc + 
-              `<span>${value.city}: ${currencyFormatter.format(value.total, {code: 'IDR'})}</span> <br/>
+              acc +
+              `<span>${value.city}: ${currencyFormatter.format(value.total, { code: 'IDR' })}</span> <br/>
         `,
             ''
           ) || 'Data Kosong <br/>'
-        } 
+          } 
       
         <span><b>Total: ${currencyFormatter.format(provinceData.reduce((
-          (acc, value) => acc + Number.parseInt(value.total)),
-          0
-        ), {code: 'IDR'})}</b></span>
+            (acc, value) => acc + Number.parseInt(value.total)),
+            0
+          ), { code: 'IDR' })}</b></span>
         `
-      })
+      }, muncul)
     )
-    
+
     // currencyFormatter.format(,{ code: 'IDR' })
     // console.log(map)
-  }, [data])
+  }, [data, muncul])
 
-  
+
 
   useEffect(() => {
     getListData()
@@ -98,15 +98,19 @@ export default function App() {
     // console.log(json)
     setData(json.data)
   }
-  return(
-    <div>
-      <div className='in' />
+  return (
+    <>
+      <div>
+        <input type="checkbox" onChange={() => setMuncul(!muncul)}
+        /> Sembunyikan Nama Provinsi
+        <div className='in' />
+      </div>
       <Data />
-    </div>
+    </>
   )
 }
 
-function optionFactory(seriesData = [], formatter) {
+function optionFactory(seriesData = [], formatter, muncul) {
   const provinsi = new Map([
     ['1', { kode: 'id-ba', jumlah: 0 }],
     ['2', { kode: 'id-bb', jumlah: 0 }],
@@ -196,7 +200,7 @@ function optionFactory(seriesData = [], formatter) {
         name: 'Indonesia',
         dataLabels: {
           enabled: true,
-          format: '{point.name}',
+          format: muncul ? '{point.name}' : '',
         },
       },
     ],
