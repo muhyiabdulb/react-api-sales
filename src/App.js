@@ -103,8 +103,10 @@ export default function App() {
   return (
     <>
       <div>
-        <input type="checkbox" onChange={() => setMuncul(!muncul)}
-        /> Sembunyikan Nama Provinsi
+        <div className="ml-2 mt-1">
+          <input className="form-check-input"  type="checkbox" onChange={() => setMuncul(!muncul)}
+          /> Sembunyikan Nama Provinsi
+          </div>
         <div className='in' />
       </div>
       <Data />
