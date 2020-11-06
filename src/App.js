@@ -89,6 +89,7 @@ export default function App() {
   useEffect(() => {
     getListData()
   }, [])
+  
   async function getListData() {
     const response = await fetch(
       'https://api.blst.co.id/dashboard/sales-by-region'
@@ -98,6 +99,7 @@ export default function App() {
     // console.log(json)
     setData(json.data)
   }
+
   return (
     <>
       <div>
