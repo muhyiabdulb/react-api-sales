@@ -33,8 +33,8 @@ function Data(){
                 Loading ...
               </div> :
 
-                <table className="table">
-                  <thead>
+                <table className="table table-striped">
+                  <thead className="">
                     <tr>
                       <th scope="col">No.</th>
                       <th scope="col">No. Kota</th>
