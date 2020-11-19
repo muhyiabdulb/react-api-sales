@@ -4,7 +4,6 @@ import idAll from './Components/idAll'
 import currencyFormatter from 'currency-formatter'
 import Data from './Components/Data'
 
-
 const kindaMap = [
   ['1', 'id-ba'],
   ['2', 'id-bb'],
@@ -66,7 +65,8 @@ export default function App() {
         ${provinceData.reduce(
             (acc, value) =>
               acc +
-              `<span>${value.city}: ${currencyFormatter.format(value.total, { code: 'IDR' })}</span> <br/>
+              `<span>${value.city}: ${currencyFormatter.format(value.total, { code: 'IDR' })}</span>
+               <span>Qty : ${value.qty}</span> <br/>
         `,
             ''
           ) || 'Data Kosong <br/>'
@@ -76,6 +76,10 @@ export default function App() {
             (acc, value) => acc + Number.parseInt(value.total)),
             0
           ), { code: 'IDR' })}</b></span>
+
+        <span><b>Total QTY : ${provinceData.reduce((
+          (acc, value) => acc + Number.parseInt(value.qty)), 
+          0 )} </b></span>
         `
       }, muncul)
     )
