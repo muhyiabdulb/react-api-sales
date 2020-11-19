@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import currencyFormatter from 'currency-formatter'
-import { DataGrid, ColDef } from '@material-ui/data-grid'
+import { DataGrid } from '@material-ui/data-grid'
 
-/** @type ColDef[] */
 const columns = [
   { field: 'no', headerName: 'No.', width: 110 },
   { field: 'city_id', headerName: 'No. Kota', width: 140 },
