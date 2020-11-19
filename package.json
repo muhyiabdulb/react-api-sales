@@ -18,6 +18,7 @@
     "react-currency-format": "^1.0.0",
     "react-devtools": "^4.9.0",
     "react-dom": "^17.0.1",
+    "react-js-pagination": "^3.0.3",
     "react-scripts": "3.4.4"
   },
   "scripts": {
