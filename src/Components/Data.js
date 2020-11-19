@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import currencyFormatter from 'currency-formatter'
-import { DataGrid } from '@material-ui/data-grid'
+import { DataGrid, ColDef } from '@material-ui/data-grid'
 
+/** @type ColDef[] */
 const columns = [
-  { field: 'no', headerName: 'No.' },
-  { field: 'city_id', headerName: 'No. Kota' },
-  { field: 'city', headerName: 'Kota' },
-  { field: 'province_id', headerName: 'No. Provinsi' },
-  { field: 'province', headerName: 'Provinsi' },
-  { field: 'qty', headerName: 'Quantity' },
-  { field: 'total', headerName: 'Total' },
+  { field: 'no', headerName: 'No.', width: 110 },
+  { field: 'city_id', headerName: 'No. Kota', width: 140 },
+  { field: 'city', headerName: 'Kota', width: 190 },
+  { field: 'province_id', headerName: 'No. Provinsi', width: 160 },
+  { field: 'province', headerName: 'Provinsi', width: 190 },
+  { field: 'qty', headerName: 'Quantity', width: 150 },
+  { field: 'total', headerName: 'Total', width: 160 },
 ]
 
 function Data() {
@@ -38,7 +39,7 @@ function Data() {
     <div className="p-5">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-md-10">
+          <div className="col-md-12">
             {
               loading ? (<div className="alert alert-primary alert-md" role="alert">
                 Loading ...
@@ -48,7 +49,11 @@ function Data() {
               rows={sales.map((sale, index) => ({
                 no: index + 1,
                 id: sale.city_id,
-                ...sale,
+                city_id: sale.city_id,
+                city: sale.city,
+                province_id: sale.province_id,
+                province: sale.province,
+                qty: sale.qty,
                 total: currencyFormatter.format(sale.total, { code: 'IDR' })
               }))} pageSize={10} autoHeight />
             }
