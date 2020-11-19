@@ -41,6 +41,7 @@ function Data(){
                       <th scope="col">Kabupaten/Kota</th>
                       <th scope="col">No. Provinsi</th>
                       <th scope="col">Provinsi</th>
+                      <th scope="col">Quantity</th>
                       <th scope="col">Total</th>
                     </tr>
                   </thead>
@@ -54,6 +55,7 @@ function Data(){
                           <td>{sale.city}</td>
                           <td>{sale.province_id}</td>
                           <td>{sale.province}</td>
+                          <td>{sale.qty}</td>
                           <td>{currencyFormatter.format(sale.total, {code: 'IDR'})}</td>
                         </tr> 
                       )
