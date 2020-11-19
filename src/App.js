@@ -75,7 +75,7 @@ export default function App() {
         <span><b>Total: ${currencyFormatter.format(provinceData.reduce((
             (acc, value) => acc + Number.parseInt(value.total)),
             0
-          ), { code: 'IDR' })}</b></span>
+          ), { code: 'IDR' })}</b></span> <br/>
 
         <span><b>Total QTY : ${provinceData.reduce((
           (acc, value) => acc + Number.parseInt(value.qty)), 
