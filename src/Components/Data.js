@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import currencyFormatter from 'currency-formatter'
+import { DataGrid, ColDef } from '@material-ui/data-grid'
 
-function Data(){
+
+/** @type ColDef[] */
+const columns = [
+  { field: 'no', headerName: 'No.' },
+  { field: 'city_id', headerName: 'No. Kota' },
+  { field: 'city', headerName: 'Kota' },
+  { field: 'province_id', headerName: 'No. Provinsi' },
+  { field: 'province', headerName: 'Provinsi' },
+  { field: 'qty', headerName: 'Quantity' },
+  { field: 'total', headerName: 'Total' },
+]
+
+function Data() {
   const [sales, setSales] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -22,50 +35,27 @@ function Data(){
     getSales();
   }, [])
 
-  let no = 1;
-  return(
+  return (
+
     <div className="p-5">
       <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-10">
-              {
-                loading ? <div className="alert alert-primary alert-md" role="alert">
+        <div className="row justify-content-center">
+          <div className="col-md-10">
+            {
+              loading ? (<div className="alert alert-primary alert-md" role="alert">
                 Loading ...
-              </div> :
-
-                <table className="table table-striped">
-                  <thead className="">
-                    <tr>
-                      <th scope="col">No.</th>
-                      <th scope="col">No. Kota</th>
-                      <th scope="col">Kabupaten/Kota</th>
-                      <th scope="col">No. Provinsi</th>
-                      <th scope="col">Provinsi</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {
-                    sales.map((sale, index) => {
-                      return(
-                        <tr key={index}>
-                          <td>{no++}</td>
-                          <td>{sale.city_id}</td>
-                          <td>{sale.city}</td>
-                          <td>{sale.province_id}</td>
-                          <td>{sale.province}</td>
-                          <td>{sale.qty}</td>
-                          <td>{currencyFormatter.format(sale.total, {code: 'IDR'})}</td>
-                        </tr> 
-                      )
-                    })
-                  }
-                  </tbody>
-                </table>
-              }
-            </div>
+              </div>) :
+              <DataGrid 
+              columns={columns} 
+              rows={sales.map((sale, index) => ({
+                no: index + 1,
+                id: sale.city_id,
+                ...sale,
+                total: currencyFormatter.format(sale.total, { code: 'IDR' })
+              }))} pageSize={10} autoHeight />
+            }
           </div>
+        </div>
       </div>
     </div>
   )
