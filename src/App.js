@@ -65,14 +65,14 @@ export default function App() {
         ${provinceData.reduce(
             (acc, value) =>
               acc +
-              `<span>${value.city}: ${currencyFormatter.format(value.total, { code: 'IDR' })}</span>
-               <span>Qty : ${value.qty}</span> <br/>
+              `<span>${value.city} : ${currencyFormatter.format(value.total, { code: 'IDR' })}</span>
+               <span><b>QTY : ${value.qty}</b> </span> <br/>
         `,
             ''
           ) || 'Data Kosong <br/>'
           } 
       
-        <span><b>Total: ${currencyFormatter.format(provinceData.reduce((
+        <span><b>Total : ${currencyFormatter.format(provinceData.reduce((
             (acc, value) => acc + Number.parseInt(value.total)),
             0
           ), { code: 'IDR' })}</b></span> <br/>
