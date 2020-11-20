@@ -49,10 +49,7 @@ function Data() {
                 no: index + 1,
                 id: sale.city_id,
                 city_id: sale.city_id,
-                city: sale.city,
-                province_id: sale.province_id,
-                province: sale.province,
-                qty: sale.qty,
+                ...sale,
                 total: currencyFormatter.format(sale.total, { code: 'IDR' })
               }))} pageSize={10} autoHeight />
             }
